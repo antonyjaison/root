@@ -21,6 +21,9 @@ const config = {
       fontFamily: {
         poppins: "var(--font-poppins)",
       },
+      backgroundImage: {
+        'background': "url('/svg/background.svg')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
