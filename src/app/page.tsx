@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button";
-import useDrawer from "@/hooks/useDrawer";
+'use client'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
-  return <main className=""></main>;
+  const router = useRouter()
+  router.push("/home")
 }
