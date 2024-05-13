@@ -14,7 +14,7 @@ const TopBottomLayout = ({
   topClassname,
 }: TopBottomLayoutProps) => {
   return (
-    <div className="w-screen h-screen flex flex-col">
+    <div className="w-screen h-screen flex flex-col bg-[#f0f0f0]">
       <Navbar className={topClassname} />
       <div className="flex-1">{children}</div>
       <BottomTabs className={bottomClassname} />
