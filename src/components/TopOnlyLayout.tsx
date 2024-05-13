@@ -8,7 +8,7 @@ type TopOnlyLayoutProps = {
 
 const TopOnlyLayout = ({ children, topClassname }: TopOnlyLayoutProps) => {
   return (
-    <div className="flex w-screen h-screen flex-col">
+    <div className="flex w-screen h-[100dvh] flex-col">
       <Navbar className={topClassname} />
       <div className="flex-1">{children}</div>
     </div>

@@ -37,7 +37,7 @@ const BottomTabs = ({ className }: BottomTabsProps) => {
   return (
     <div
       className={cn(
-        "w-full py-6 px-8 [box-shadow:0px_-3.945px_9.862px_0px_rgba(0,_0,_0,_0.10)]",
+        "w-full py-2 bg-white px-8 [box-shadow:0px_-3.945px_9.862px_0px_rgba(0,_0,_0,_0.10)]",
         className
       )}
     >
@@ -45,13 +45,13 @@ const BottomTabs = ({ className }: BottomTabsProps) => {
         {links.map((link) => (
           <Link
             className={cn(
-              "flex flex-col items-center gap-1.5 text-[#111111] p-1.5",
+              "flex flex-col items-center text-[#111111] p-1.5 text-[10px]",
               pathname === link.href && "text-[#006D77]"
             )}
             key={link.href}
             href={link.href}
           >
-            <link.Icon className="w-6 h-6" />
+            <link.Icon className="w-[22px] h-[22px]" />
             <span>{link.title}</span>
           </Link>
         ))}
