@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type DrawerName = "welcome";
+type DrawerName = "welcome" | "newcommunitypost";
 
 type DrawerState = {
   currentDrawer: DrawerName | null;
