@@ -10,12 +10,12 @@ const Resources = () => {
                 <ChevronRight size={20} />
             </div>
             <div className=' grid grid-cols-3 gap-4 mt-5'>
-                <ResourceCard />
-                <ResourceCard />
-                <ResourceCard />
-                <ResourceCard />
-                <ResourceCard />
-                <ResourceCard />
+                <ResourceCard bg_color='#f0f0f0' />
+                <ResourceCard bg_color='#f0f0f0' />
+                <ResourceCard bg_color='#f0f0f0' />
+                <ResourceCard bg_color='#f0f0f0' />
+                <ResourceCard bg_color='#f0f0f0' />
+                <ResourceCard bg_color='#f0f0f0' />
             </div>
         </div>
     )

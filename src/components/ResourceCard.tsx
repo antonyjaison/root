@@ -1,9 +1,13 @@
 import React from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
-const ResourceCard = () => {
+type ResourceCardProps = {
+    bg_color: string
+}
+
+const ResourceCard = ({ bg_color }:ResourceCardProps) => {
     return (
-        <div className=' w-24 h-24 rounded-2xl bg-[#f0f0f0] p-4 flex flex-col gap-2'>
+        <div style={{ backgroundColor: bg_color }} className=' w-24 h-24 rounded-2xl p-4 flex flex-col gap-2'>
             <div>
                 <h5 className=' text-[12px]'>Water</h5>
                 <p className=' text-[10px]'>Normal level</p>
