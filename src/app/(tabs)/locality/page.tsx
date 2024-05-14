@@ -2,9 +2,43 @@ import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChevronRight } from 'lucide-react'
 import ResourceCard from '@/components/ResourceCard'
+import axios from 'axios'
 
 
-const LocalityPage = () => {
+const LocalityPage = async () => {
+
+    const data = {
+        "messages": "",
+        "uid": 1234,
+        "latitude": 8.5241,
+        "longitude": 76.9366
+    }
+
+    const res = await axios.post("https://25b6-59-92-70-236.ngrok-free.app/soil-data", data)
+    const res_data = res.data?.stations[0]
+
+    console.log(res_data)
+
+    const requestData = {
+        latitude: data.latitude,
+        longitude: data.longitude
+    };
+
+    const weather_res = await axios.post("http://127.0.0.1:4040/get-weather", requestData)
+    const weather = weather_res.data[0]
+    console.log(weather)
+
+    const gemini_data = {
+        ...weather,
+        AQI: res_data.AQI,
+        CO: res_data.CO,
+        NO2: res_data.NO2,
+        OZONE: res_data.OZONE,
+        SO2: res_data.SO2,
+    }
+
+    console.log(gemini_data)
+
     return (
         <div className='px-7 flex flex-col gap-6'>
 
@@ -31,12 +65,11 @@ const LocalityPage = () => {
                         <div>
                             <h4 className=' text-lg'>Basic Characteristics</h4>
                             <div className=' grid grid-cols-3 gap-5 mt-3'>
-                                <ResourceCard bg_color='#fff' />
-                                <ResourceCard bg_color='#fff' />
-                                <ResourceCard bg_color='#fff' />
-                                <ResourceCard bg_color='#fff' />
-                                <ResourceCard bg_color='#fff' />
-                                <ResourceCard bg_color='#fff' />
+                                <ResourceCard bg_color='#fff' title='Air Quality Index' value={res_data.AQI} />
+                                <ResourceCard bg_color='#fff' title='Carbon Monoxide' value={`${res_data.CO}`} />
+                                <ResourceCard bg_color='#fff' title='Nitrogen Dioxide' value={`${res_data.NO2}`} />
+                                <ResourceCard bg_color='#fff' title='Ozone' value={`${res_data.OZONE}`} />
+                                <ResourceCard bg_color='#fff' title='Sulphur Dioxide' value={`${res_data.SO2}`} />
                             </div>
                         </div>
 

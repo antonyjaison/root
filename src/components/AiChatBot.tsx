@@ -22,7 +22,7 @@ function AiChatBot() {
     setMessages((prev) => [...prev, { from, message }]);
   };
 
-  const url = process.env.NEXT_PUBLIC_GEMINI_API;
+  const url = "https://25b6-59-92-70-236.ngrok-free.app";
 
   console.log(url);
 
@@ -36,9 +36,11 @@ function AiChatBot() {
 
     axios
       .post(url + "/chat", {
-        message: input,
+        messages: input,
+        uid:"1234"
       })
       .then((res) => {
+        console.log(res.data)
         addMessage("bot", res.data);
       })
       .catch((err) => console.log(err))
