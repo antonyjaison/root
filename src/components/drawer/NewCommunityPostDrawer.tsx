@@ -5,6 +5,8 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "../ui/drawer";
+import { UploadButton } from "@/utils/uploadthing";
+import { Textarea } from "@/components/ui/textarea"
 
 const NewCommunityPostDrawer = () => {
   return (
@@ -14,7 +16,21 @@ const NewCommunityPostDrawer = () => {
           Create a new post
         </DrawerTitle>
       </DrawerHeader>
-      <DrawerContent></DrawerContent>
+      <div>
+        <Textarea />
+        <UploadButton
+          endpoint="imageUploader"
+          onClientUploadComplete={(res) => {
+            // Do something with the response
+            console.log("Files: ", res);
+            alert("Upload Completed");
+          }}
+          onUploadError={(error: Error) => {
+            // Do something with the error.
+            alert(`ERROR! ${error.message}`);
+          }}
+        />
+      </div>
     </div>
   );
 };
