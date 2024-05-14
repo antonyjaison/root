@@ -4,6 +4,7 @@ import "./globals.css";
 import { DrawerProvider } from "@/components/drawer";
 import { cn } from "@/lib/utils";
 import QueryProvider from "@/components/QueryProvider";
+import "@uploadthing/react/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({

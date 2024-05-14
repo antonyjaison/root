@@ -95,7 +95,7 @@ function Message({ from, message }) {
             from === "user" && "ml-auto "
           )}
         >
-          <AvatarImage src={from === "bot" ? "/next.svg" : "/next.svg"} />
+          <AvatarImage src={from === "bot" ? "/svg/sage.svg" : "https://github.com/shadcn.png"} />
         </Avatar>
       </div>
       <div
