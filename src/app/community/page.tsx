@@ -8,6 +8,15 @@ import { db } from "@/lib/db";
 import { postTable } from "@/lib/schema/post";
 import PostCard from "./_components/PostCard";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 type CommunityPageProps = {
   searchParams: {
     filter?: string;
