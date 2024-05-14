@@ -8,7 +8,7 @@ const NewCommunityButton = () => {
   return (
     <button
       onClick={() => setDrawer("newcommunitypost")}
-      className="fixed p-2.5 rounded-[9px] bg-black text-white z-10 top-[77vh] right-[5%]"
+      className="fixed p-2.5 rounded-[9px] bg-black text-white z-10 top-[81vh] right-[5%]"
     >
       <Pencil />
     </button>

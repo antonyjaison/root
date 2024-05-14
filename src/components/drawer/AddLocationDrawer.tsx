@@ -57,7 +57,25 @@ const AddLocationDrawer = () => {
               onClick={(e) => {
                 const lat = e.latLng?.lat();
                 const lng = e.latLng?.lng();
+                console.log(e);
                 if (lat && lng) {
+                  const geocoder = new window.google.maps.Geocoder();
+                  const request = {
+                    location: { lat, lng },
+                  };
+
+                  geocoder.geocode(request, (results, status) => {
+                    if (status === "OK" && results && results.length > 0) {
+                      const cityComponents =
+                        results[0].address_components.filter((component) =>
+                          component.types.includes("locality")
+                        );
+
+                      if (cityComponents.length > 0) {
+                        setText(cityComponents[0].long_name);
+                      }
+                    }
+                  });
                   setSelectedCenter({
                     lat,
                     lng,
