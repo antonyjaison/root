@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Menu, Settings } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 type NavbarProps = {
@@ -9,9 +10,9 @@ type NavbarProps = {
 const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={cn("p-7 flex justify-between items-center", className)}>
-      <button className="p-2">
+      <Link href="/locations" className="p-2">
         <Menu />
-      </button>
+      </Link>
       <h3 className="text-2xl">Kozhikode</h3>
       <button className="p-2">
         <Settings />
