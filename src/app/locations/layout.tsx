@@ -1,4 +1,6 @@
-import { Menu, Plus } from "lucide-react";
+import { ArrowLeft, Menu, Plus } from "lucide-react";
+import AddLocationButton from "./components/AddLocationButton";
+import Link from "next/link";
 
 const LocationsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,13 +14,11 @@ const LocationsLayout = ({ children }: { children: React.ReactNode }) => {
 const LocationsNavbar = () => {
   return (
     <div className="p-7 flex justify-between items-center">
-      <button className="p-2">
-        <Menu />
-      </button>
+      <Link href="/home" className="p-2">
+        <ArrowLeft />
+      </Link>
       <h3 className="text-2xl">Kozhikode</h3>
-      <button className="p-2">
-        <Plus />
-      </button>
+      <AddLocationButton />
     </div>
   );
 };

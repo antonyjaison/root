@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { DrawerProvider } from "@/components/drawer";
 import { cn } from "@/lib/utils";
+import QueryProvider from "@/components/QueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -24,8 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, poppins.variable, "font-poppins")}>
-        {children}
-        <DrawerProvider />
+        <QueryProvider>
+          {children}
+          <DrawerProvider />
+        </QueryProvider>
       </body>
     </html>
   );
