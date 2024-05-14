@@ -4,6 +4,15 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import NewCommunityButton from "./_components/NewCommunityButton";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 
 type CommunityPageProps = {
   searchParams: {
@@ -65,9 +74,19 @@ function PostCard() {
             <p className="text-[9px] text-[#8E8E8E]">Just now · 0.2 Kms</p>
           </div>
         </div>
-        <button>
-          <Ellipsis />
-        </button>
+
+
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Ellipsis />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+
+
       </div>
       <div>
         <p className="text-[10px] my-2">Ethan posted a photo</p>
