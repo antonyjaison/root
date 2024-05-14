@@ -1,9 +1,13 @@
-import { cn } from "@/lib/utils";
+import { calculateDistance, cn } from "@/lib/utils";
 import { Ellipsis } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import NewCommunityButton from "./_components/NewCommunityButton";
+import { db } from "@/lib/db";
+import { postTable } from "@/lib/schema/post";
+import PostCard from "./_components/PostCard";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +16,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
 
 type CommunityPageProps = {
   searchParams: {
@@ -25,14 +28,20 @@ const CommunityPage = async ({ searchParams }: CommunityPageProps) => {
     redirect("/community?filter=all");
   }
 
+  const posts = await db.select().from(postTable);
+
   return (
     <div className="h-full flex flex-col">
       <Tabs filter={searchParams.filter} />
       <div className="flex-1 bg-[#F0F0F0] px-8 py-4 space-y-8 overflow-y-auto relative">
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+        {posts.length === 0 && (
+          <div className="text-center text-gray-500">
+            No posts found. Be the first to post!
+          </div>
+        )}
         <NewCommunityButton />
       </div>
     </div>
@@ -57,49 +66,6 @@ const tabs = [
     tag: "raw-materials",
   },
 ];
-
-function PostCard() {
-  return (
-    <div className="py-[14px] px-5 bg-white border-t-[5px] border-[#111]">
-      <div className="flex justify-between items-center">
-        <div className="flex gap-2.5">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="w-8 h-8 object-cover"
-            src="/images/placeholder-avatar.svg"
-            alt="placeholder avatar"
-          />
-          <div>
-            <h3>Ethan Hunt</h3>
-            <p className="text-[9px] text-[#8E8E8E]">Just now · 0.2 Kms</p>
-          </div>
-        </div>
-
-
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Ellipsis />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-
-
-      </div>
-      <div>
-        <p className="text-[10px] my-2">Ethan posted a photo</p>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className="h-[140px] w-full object-cover"
-          src="/images/dummy.jpeg"
-          alt=""
-        />
-      </div>
-    </div>
-  );
-}
 
 type TabsProps = {
   filter?: string;
